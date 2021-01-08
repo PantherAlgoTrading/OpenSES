@@ -8,6 +8,8 @@ flask = "*"
 
 [dev-packages]
 black = "==19.10b0"
+setuptools = "*"
+pep517 = "*"
 
 [requires]
 python_version = "3.9"
