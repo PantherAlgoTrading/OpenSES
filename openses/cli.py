@@ -4,6 +4,7 @@ from pathlib import Path
 
 from flask import Flask
 
+from openses.config import initialize_new_config_file
 from openses.hub import add_views_to_app
 
 
@@ -22,22 +23,7 @@ def initialize_openses() -> None:
     strategies_folder.mkdir()
     pipelines_folder.mkdir()
 
-    config_file = cwd / "config.ini"
-
-    config = ConfigParser()
-    config["OpenSES"] = {
-        "NumWorkers": "1",
-        "RenewalTime": "06:00 EST",
-        "OpenTime": "06:05 EST",
-        "CompletionTime": "06:10 EST",
-        "InstanceName": "OpenSES Instance",
-        "DefaultFundAmount": "10000",
-        "StrategiesDirectory": "strategies",
-        "PipelinesDirectory": "pipelines",
-    }
-
-    with config_file.open(mode="w") as f:
-        config.write(f)
+    initialize_new_config_file()
 
 
 def serve_openses_hub_instance() -> None:
