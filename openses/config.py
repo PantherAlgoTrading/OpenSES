@@ -38,8 +38,9 @@ def get_config(working_directory: Path = Path.cwd()) -> OpenSESConfig:
 
     config = ConfigParser()
     config.read(config_file)
-    
+
     return OpenSESConfig(**config._sections["OpenSES"])
+
 
 if __name__ == "__main__":
     initialize_new_config_file()
