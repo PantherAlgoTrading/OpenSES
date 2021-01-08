@@ -5,11 +5,13 @@ name = "pypi"
 
 [packages]
 flask = "*"
+requests = "*"
 
 [dev-packages]
-black = "==19.10b0"
+black = "==20.8b1"
 setuptools = "*"
 pep517 = "*"
+mypy = "*"
 
 [requires]
 python_version = "3.9"
