@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import sys
+import argparse
 from configparser import ConfigParser
 from pathlib import Path
 
@@ -34,8 +34,11 @@ def initialize_openses():
 
 commands = {"init": initialize_openses}
 
-if __name__ == "__main__":
-    command = sys.argv[1]
 
-    if command in commands:
-        commands[command]()
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("command", help="Commands: init, serve, execute, new")
+    args = parser.parse_args()
+
+    if args.command in commands:
+        commands[args.command]()
