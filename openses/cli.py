@@ -4,6 +4,9 @@ from pathlib import Path
 
 from flask import Flask
 
+from openses.hub import add_views_to_app
+
+
 def initialize_openses() -> None:
     """Preparing empty directory for OpenSES instance."""
     cwd = Path.cwd()
@@ -36,8 +39,12 @@ def initialize_openses() -> None:
     with config_file.open(mode="w") as f:
         config.write(f)
 
+
 def serve_openses_hub_instance() -> None:
-    pass
+    app = Flask("openses.hub")
+    add_views_to_app(app)
+    app.run()
+
 
 commands = {"init": initialize_openses, "serve": serve_openses_hub_instance}
 

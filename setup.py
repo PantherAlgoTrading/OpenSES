@@ -1,3 +1,3 @@
-import setuptools # type: ignore
+import setuptools  # type: ignore
 
 setuptools.setup()
