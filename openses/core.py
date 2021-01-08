@@ -1,6 +1,14 @@
 from abc import ABC, abstractmethod
+from typing import NamedTuple, List
+from datetime import datetime
 
-# TODO: Finalize parameters for abstract methods send_orders() and update_hub()
+
+class Order(NamedTuple):
+    datetime: datetime
+    purchase_price: float
+    quantity: int
+    symbol: str
+    order_type: int
 
 
 class Strategy(ABC):
@@ -10,8 +18,8 @@ class Strategy(ABC):
         pass
 
     @abstractmethod
-    def send_orders():
-        """After iterating through data, send orders back to OpenSES hub"""
+    def send_orders(orders):
+        """After iterating through data, send a List of Order objects back to OpenSES hub"""
         pass
 
 
@@ -22,6 +30,6 @@ class PipelineScript(ABC):
         pass
 
     @abstractmethod
-    def update_hub():
+    def update_hub(data):
         """Update the hub's data store after retrieving and/or processing data."""
         pass
