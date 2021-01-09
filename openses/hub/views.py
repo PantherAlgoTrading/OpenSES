@@ -1,6 +1,6 @@
 from typing import Dict, Tuple, List
 
-from flask import Flask, request
+from flask import Flask
 from flask.json import jsonify
 from flask.views import MethodView
 
@@ -26,17 +26,12 @@ def method_not_allowed(e) -> Tuple[Dict[str, str], int]:
     )
 
 
-class DataAPI(MethodView):
+class MarketDataFetchAPI(MethodView):
     def get(self) -> Dict:
-        print("Yeee")
-        return jsonify({})
-
-    def post(self) -> Dict:
-        print("wow")
         return jsonify({})
 
 
 def add_views_to_app(app: Flask) -> None:
     app.register_error_handler(404, not_found)
     app.register_error_handler(405, method_not_allowed)
-    app.add_url_rule("/data", view_func=DataAPI.as_view("data_order"))
+    app.add_url_rule("/data", view_func=MarketDataFetchAPI.as_view("market_data_fetch"))

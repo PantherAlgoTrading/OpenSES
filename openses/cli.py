@@ -1,5 +1,4 @@
 from argparse import ArgumentParser
-from configparser import ConfigParser
 from pathlib import Path
 
 from flask import Flask

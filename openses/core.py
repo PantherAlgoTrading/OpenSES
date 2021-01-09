@@ -13,23 +13,23 @@ class Order(NamedTuple):
 
 class Strategy(ABC):
     @abstractmethod
-    def retrieve_data():
+    def retrieve_data(self):
         """Retrieve data from OpenSES hub that will be used by strategy"""
         pass
 
     @abstractmethod
-    def send_orders(orders):
+    def send_orders(self, orders):
         """After iterating through data, send a List of Order objects back to OpenSES hub"""
         pass
 
 
 class PipelineScript(ABC):
     @abstractmethod
-    def retrieve_data():
+    def retrieve_data(self):
         """Retrieve the initial source of data that the pipeline function will modify (if necessary)"""
         pass
 
     @abstractmethod
-    def update_hub(data):
+    def update_hub(self, data):
         """Update the hub's data store after retrieving and/or processing data."""
         pass
