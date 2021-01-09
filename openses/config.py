@@ -1,11 +1,11 @@
 from datetime import time
+from functools import cache
 from pathlib import Path
-from typing import Dict, NamedTuple
+from typing import Any, MutableMapping, NamedTuple
 
 import toml
 
-CONFIG_FILE_NAME = "config.toml"
-
+CONFIG_FILE_NAME: str = "config.toml"
 
 class OpenSESConfig(NamedTuple):
     num_workers: int = 4
@@ -32,13 +32,25 @@ def initialize_new_config_file(working_directory: Path = Path.cwd()) -> None:
         toml.dump(config, f)
 
 
-def get_config(working_directory: Path = Path.cwd()) -> OpenSESConfig:
+@cache
+def _read_config_file(working_directory: Path) -> MutableMapping[str, Any]:
     config_file = working_directory / CONFIG_FILE_NAME
-
     if not config_file.exists():
         raise RuntimeError("Can't find config.ini in working directory")
 
-    config: Dict
+    config: MutableMapping[str, Any]
     with config_file.open() as f:
         config = toml.load(f)
+
+    return config
+
+
+def get_config(working_directory: Path = Path.cwd()) -> OpenSESConfig:
+    config = _read_config_file(working_directory)
     return OpenSESConfig(**config["openses"])
+
+
+def get_hub_config(working_directory: Path = Path.cwd()) -> OpenSESHubConfig:
+    config = _read_config_file(working_directory)
+    return OpenSESHubConfig(**config["hub"])
+
