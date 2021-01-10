@@ -4,7 +4,7 @@ from pathlib import Path
 from flask import Flask
 
 from openses.config import initialize_new_config_file
-from openses.hub import add_views_to_app
+from openses.hub import add_views_to_app, initialize_db_tables
 
 
 def initialize_openses() -> None:
@@ -23,6 +23,8 @@ def initialize_openses() -> None:
     pipelines_folder.mkdir()
 
     initialize_new_config_file()
+
+    initialize_db_tables()
 
 
 def serve_openses_hub_instance() -> None:

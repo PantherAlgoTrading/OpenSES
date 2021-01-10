@@ -7,11 +7,12 @@ import toml
 
 CONFIG_FILE_NAME: str = "config.toml"
 
+
 class OpenSESConfig(NamedTuple):
     num_workers: int = 4
-    renewal_time: time = time.fromisoformat("16:00:00-05:00")
-    open_time: time = time.fromisoformat("16:05:00-05:00")
-    completion_time: time = time.fromisoformat("16:10:00-05:00")
+    renewal_time: time = time.fromisoformat("16:00:00")
+    open_time: time = time.fromisoformat("16:05:00")
+    completion_time: time = time.fromisoformat("16:10:00")
     instance_name: str = "Hub"
     default_fund_amount: int = 10000
     strategies_directory: str = "strategies"
@@ -53,4 +54,3 @@ def get_config(working_directory: Path = Path.cwd()) -> OpenSESConfig:
 def get_hub_config(working_directory: Path = Path.cwd()) -> OpenSESHubConfig:
     config = _read_config_file(working_directory)
     return OpenSESHubConfig(**config["hub"])
-
