@@ -1,4 +1,5 @@
 from datetime import time
+
 # from functools import cache
 from pathlib import Path
 from typing import Any, MutableMapping, NamedTuple

@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import NamedTuple, List
+from typing import Any, NamedTuple, List
 from datetime import datetime
 
 
@@ -9,6 +9,20 @@ class Order(NamedTuple):
     quantity: int
     symbol: str
     order_type: int
+
+
+class TimeSeriesData(NamedTuple):
+    timestamp: datetime
+    data_type: str
+    data: Any
+
+
+class PriceData(NamedTuple):
+    open: float
+    high: float
+    low: float
+    volume: int
+    close: float
 
 
 class Strategy(ABC):
