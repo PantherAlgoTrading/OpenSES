@@ -4,8 +4,6 @@ from uuid import uuid4
 
 from peewee import SqliteDatabase, Model, FloatField, UUIDField
 
-from openses.config import get_config
-
 
 OPENSES_HIDDEN_FOLDER: Path = Path.cwd() / ".openses"
 SQLITE3_FILE_PATH: Path = OPENSES_HIDDEN_FOLDER / "datastore.db"
@@ -21,9 +19,9 @@ class BaseModel(Model):
 # TODO: Add models here and add them to create_tables
 
 
-# class User(BaseModel):
-#     uuid = UUIDField(primary_key=True, default=uuid4)
-#     fund_amount = FloatField(default=get_config().default_fund_amount)
+class User(BaseModel):
+    uuid = UUIDField(primary_key=True, default=uuid4)
+    fund_amount = FloatField()
 
 
 def initialize_db_tables() -> None:

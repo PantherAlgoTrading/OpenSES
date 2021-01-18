@@ -25,6 +25,11 @@ class PriceData(NamedTuple):
     close: float
 
 
+DATE_TYPE_MAPPING = {
+    PriceData.__name__: PriceData
+}
+
+
 class Strategy(ABC):
     @abstractmethod
     def retrieve_data(self):
