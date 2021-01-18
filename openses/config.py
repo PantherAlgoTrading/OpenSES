@@ -1,5 +1,5 @@
 from datetime import time
-from functools import cache
+# from functools import cache
 from pathlib import Path
 from typing import Any, MutableMapping, NamedTuple
 
@@ -33,7 +33,7 @@ def initialize_new_config_file(working_directory: Path = Path.cwd()) -> None:
         toml.dump(config, f)
 
 
-@cache
+# @cache
 def _read_config_file(working_directory: Path) -> MutableMapping[str, Any]:
     config_file = working_directory / CONFIG_FILE_NAME
     if not config_file.exists():

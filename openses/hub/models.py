@@ -21,9 +21,9 @@ class BaseModel(Model):
 # TODO: Add models here and add them to create_tables
 
 
-class User(BaseModel):
-    uuid = UUIDField(primary_key=True, default=uuid4)
-    fund_amount = FloatField(default=get_config().default_fund_amount)
+# class User(BaseModel):
+#     uuid = UUIDField(primary_key=True, default=uuid4)
+#     fund_amount = FloatField(default=get_config().default_fund_amount)
 
 
 def initialize_db_tables() -> None:

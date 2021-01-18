@@ -137,4 +137,4 @@ pipelines/
 strategies/
 config.ini
 config.toml
-
+temp/
