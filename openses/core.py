@@ -21,13 +21,8 @@ class PriceData(NamedTuple):
     open: float
     high: float
     low: float
-    volume: int
     close: float
-
-
-DATE_TYPE_MAPPING = {
-    PriceData.__name__: PriceData
-}
+    volume: int
 
 
 class Strategy(ABC):
